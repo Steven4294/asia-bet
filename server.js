@@ -22,6 +22,15 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
+const link1 = 'L8bPjlwGrbCaPiUPTe7w_ObmnvYcqFIJ994b4pVmEtg'
+const link2 = 'yOerZRmLdv6tZ7ychHyvVEMRx3XT9h7F3m8LN8BoIy8'
+app.get(`/.well-known/acme-challenge/${link1}`, (req, res) => {
+  res.sendFile(path.join(__dirname, `src/.well-known/acme-challenge/${link1}`));
+});
+app.get(`/.well-known/acme-challenge/${link2}`, (req, res) => {
+  res.sendFile(path.join(__dirname, `src/.well-known/acme-challenge/${link2}`));
+});
+
 const port = process.env.PORT || '1339';
 app.set('port', port);
 
